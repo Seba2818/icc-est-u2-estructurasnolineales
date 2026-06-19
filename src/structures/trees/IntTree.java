@@ -50,4 +50,17 @@ public class IntTree {
     return actual;
         
     }
+
+    public void preOrden(){
+        preOrdenRecursivo(root);
+    }
+
+    private void preOrdenRecursivo(Node <Integer> actual){
+        if (actual == null)
+            return;
+
+        System.out.println(actual);
+        preOrdenRecursivo(actual.getLeft());
+        preOrdenRecursivo(actual.getRight());
+    }
 }

@@ -1,3 +1,5 @@
+import structures.node.Node;
+import structures.trees.IntTree;
 
 public class App {
     public static void main(String[] args) throws Exception {
