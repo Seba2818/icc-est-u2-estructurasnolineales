@@ -63,4 +63,21 @@ public class IntTree {
         preOrdenRecursivo(actual.getLeft());
         preOrdenRecursivo(actual.getRight());
     }
+
+    public void posOrden(){
+        posOrdenRecursivo(root);
+    }
+
+    public void posOrdenRecursivo(Node <Integer> actual){
+        if (actual == null)
+            return;
+        
+        posOrdenRecursivo(actual.getLeft());
+        posOrdenRecursivo(actual.getRight());
+        System.out.println(actual);
+    }
+
+    public void inOrden(){
+        inOrdenRecursivo
+    }
 }
