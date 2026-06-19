@@ -78,6 +78,15 @@ public class IntTree {
     }
 
     public void inOrden(){
-        inOrdenRecursivo
+        inOrdenRecursivo(root);
+    }
+
+    public void inOrdenRecursivo(Node<Integer> actual){
+    if (actual == null)
+        return;
+
+        inOrdenRecursivo(actual.getLeft());  
+        System.out.println(actual);          
+        inOrdenRecursivo(actual.getRight()); 
     }
 }
