@@ -24,6 +24,15 @@ public class App {
 
         nodo3.setLeft(nodo1);
 
+        System.out.println("Preorden:");
+        arbolNumero.preOrden();
+
+        System.out.println("Inorden:");
+        arbolNumero.inOrden();
+
+        System.out.println("Postorden:");
+        arbolNumero.posOrden();
+
         
     }
 }
