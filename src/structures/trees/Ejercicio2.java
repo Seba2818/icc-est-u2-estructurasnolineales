@@ -4,6 +4,7 @@ import structures.node.Node;
 
 public class Ejercicio2 {
     public void invertTree(Node<Integer> root){
+
         System.out.println("Arbol Original");
         printTree(root);
         invertirRecursivo(root);
@@ -29,7 +30,6 @@ public class Ejercicio2 {
      public void printTree(Node<Integer> root){
         printTreeRecursivo(root, 0);
     }
-
 
     private void printTreeRecursivo(Node<Integer> actual, int nivel){
 
