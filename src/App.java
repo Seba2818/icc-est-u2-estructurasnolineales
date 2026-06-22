@@ -1,13 +1,38 @@
 import models.Persona;
 import structures.node.Node;
 import structures.trees.BinaryTree;
+import structures.trees.Ejercicio1;
+import structures.trees.Ejercicio2;
 import structures.trees.IntTree;
 
 public class App {
     public static void main(String[] args) throws Exception {
         runIntTree();
         runBinaryTree();
+        runEjercicios();
+        
     }
+
+   
+    private static void runEjercicios(){
+        Ejercicio1 ejercicio1 = new Ejercicio1();
+        int[] numeros = new int[]{5,3,7,2,4,6,8};
+        ejercicio1.insert(numeros);
+
+        Ejercicio2 ejercicio2 = new Ejercicio2();
+        int[] numeros2 = new int[] {5,3,7,2,4,6,8};
+
+        BinaryTree<Integer> arbol = new BinaryTree<>();
+        for(int numero: numeros2)
+            arbol.add(numero);
+
+        Node<Integer> root = arbol.getRoot();
+        ejercicio2.invertTree(root);
+
+        
+    }
+
+     
 
     private static void runBinaryTree() {
         BinaryTree<String> arbolStrings = new BinaryTree<>();
@@ -39,6 +64,13 @@ public class App {
         arbolNumero.add(50);
         arbolNumero.add(10);
         arbolNumero.add(30);
+        arbolNumero.add(60);
+        arbolNumero.add(75);
+        arbolNumero.add(55
+
+
+        );
+        
 
         System.out.println("\nPreorden: ");
         arbolNumero.preOrden();
