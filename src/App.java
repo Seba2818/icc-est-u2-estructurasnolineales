@@ -1,8 +1,10 @@
+import java.util.List;
 import models.Persona;
 import structures.node.Node;
 import structures.trees.BinaryTree;
 import structures.trees.Ejercicio1;
 import structures.trees.Ejercicio2;
+import structures.trees.Ejercicio3;
 import structures.trees.IntTree;
 
 public class App {
@@ -15,10 +17,12 @@ public class App {
 
    
     private static void runEjercicios(){
+        // ----------------------------
         Ejercicio1 ejercicio1 = new Ejercicio1();
         int[] numeros = new int[]{5,3,7,2,4,6,8};
         ejercicio1.insert(numeros);
-
+        
+        // ---------------------------
         Ejercicio2 ejercicio2 = new Ejercicio2();
         int[] numeros2 = new int[] {5,3,7,2,4,6,8};
 
@@ -29,6 +33,27 @@ public class App {
         Node<Integer> root = arbol.getRoot();
         ejercicio2.invertTree(root);
 
+        // ---------------------------------
+        Ejercicio3 ejercicio3 = new Ejercicio3();
+        
+        int[] numeros3 = new int[]{4,2,7,1,3,6,9};
+
+        BinaryTree<Integer> arbolEjercicio3 = new BinaryTree<>();
+        
+        for (int numero : numeros3) {
+             arbolEjercicio3.add(numero);
+            }
+
+        List<List<Node<Integer>>> niveles = ejercicio3.listLevels(arbolEjercicio3.getRoot());
+
+        System.out.println("\n------------Ejercicio 3-----------");
+
+            for (List<Node<Integer>> nivel : niveles) {
+                for (Node<Integer> nodo : nivel) {
+                System.out.print(nodo.getValue() + " ");
+                }
+                System.out.println();
+            }
         
     }
 

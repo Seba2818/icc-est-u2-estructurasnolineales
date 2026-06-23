@@ -5,6 +5,8 @@ import structures.node.Node;
 public class Ejercicio2 {
     public void invertTree(Node<Integer> root){
 
+        System.out.println("\n------------Ejercicio 2-----------");
+
         System.out.println("Arbol Original");
         printTree(root);
         invertirRecursivo(root);
