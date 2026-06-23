@@ -5,6 +5,7 @@ import structures.trees.BinaryTree;
 import structures.trees.Ejercicio1;
 import structures.trees.Ejercicio2;
 import structures.trees.Ejercicio3;
+import structures.trees.Ejercicio4;
 import structures.trees.IntTree;
 
 public class App {
@@ -54,6 +55,33 @@ public class App {
                 }
                 System.out.println();
             }
+
+        //--------------------------------------
+        Ejercicio4 ejercicio4 = new Ejercicio4();
+       
+
+        Node<Integer> root4 = new Node<>(4);
+        root4.setLeft(new Node<>(2));
+        root4.setRight(new Node<>(7));
+
+        root4.getLeft().setLeft(new Node<>(1));
+        root4.getLeft().setRight(new Node<>(3));
+
+        root4.getLeft().getLeft().setLeft(new Node<>(8));
+
+        int profundidad = ejercicio4.maxDepth(root4);
+
+        System.out.println("\n------------Ejercicio 4-----------");
+
+
+        System.out.println("Input:");
+        System.out.println("    " + root4.getValue());
+        System.out.println("  " + root4.getLeft().getValue() + "     " + root4.getRight().getValue());
+        System.out.println(" " + root4.getLeft().getLeft().getValue() + "   " + root4.getLeft().getRight().getValue());
+        System.out.println(root4.getLeft().getLeft().getLeft().getValue());
+
+        System.out.println();
+        System.out.println("Output: " + profundidad);
         
     }
 
