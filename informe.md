@@ -299,3 +299,18 @@ public class Ejercicio4 {
 
 ![Terminal 4](terminal4.png)
 
+---
+
+## Clase principal: App
+
+---
+
+En la clase `App` tengo el método `main`, que es desde donde inicia la ejecución del programa. Desde ahí llamo a los métodos que me permiten probar las diferentes partes del proyecto. En este caso, el método más importante es `runEjercicios()`, porque dentro de él voy ejecutando los cuatro ejercicios realizados.
+
+Primero creo un objeto de la clase `Ejercicio1` y también declaro un arreglo de números enteros. Ese arreglo se envía al método `insert`, donde se crea un árbol binario, se insertan los valores y luego se muestra el recorrido inorden junto con la impresión del árbol en consola.
+
+Después ejecuto el `Ejercicio2`. Para este ejercicio creo otro arreglo de números y los inserto en un nuevo árbol binario llamado `arbol`. Luego obtengo la raíz con el método `getRoot()` y se la paso al método `invertTree`, que se encarga de invertir el árbol cambiando los hijos izquierdos por los derechos.
+
+En el `Ejercicio3` creo otro árbol llamado `arbolEjercicio3`. Hice esto para no usar el mismo árbol del ejercicio anterior, porque ese ya fue invertido. Luego inserto los valores del arreglo `numeros3` y llamo al método `listLevels`, que me devuelve los nodos separados por niveles. Al final recorro esas listas usando ciclos `for` para imprimir cada nivel en una línea diferente.
+
+Finalmente, en el `Ejercicio4` creo un árbol manualmente usando objetos de tipo `Node<Integer>`. En este caso no uso el método `add()`, porque necesitaba formar una estructura específica como la del ejemplo del ejercicio. Después llamo al método `maxDepth`, que calcula la profundidad máxima del árbol. Por último, imprimo la entrada del árbol y el resultado obtenido.
