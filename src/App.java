@@ -1,4 +1,9 @@
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
+import collections.set.Sets;
+import models.Contacto;
 import models.Persona;
 import structures.node.Node;
 import structures.trees.BinaryTree;
@@ -13,10 +18,53 @@ public class App {
         runIntTree();
         runBinaryTree();
         runEjercicios();
+
+        runSets();
         
     }
 
-   
+    
+    private static void runSets() {
+        Sets sets = new Sets();
+
+        //Implementacion -> HashSet hashcode
+
+        System.out.println("\n-------------HashCode-----------");;
+        Set<String> hashSet = sets.construirHashSet();
+        System.out.println(hashSet);
+        System.out.println("Size = " + hashSet.size());
+        System.out.println(hashSet.contains("F"));
+
+        ArrayList<String> lis = new ArrayList<>();
+        lis.add("S");
+        System.out.println(lis);
+
+
+         System.out.println("\n-------------LinkedHashCode-----------");;
+        Set<String> lSet = sets.LinkedHashSet();
+        System.out.println(lSet);
+        System.out.println("Size = " + lSet.size());
+        System.out.println(lSet.contains("F"));
+
+        System.out.println("\n-------------TreeSet-----------");;
+        Set<String> tSet = sets.TreeSet();
+        System.out.println(tSet);
+        System.out.println("Size = " + tSet.size());
+        System.out.println(tSet.contains("F"));
+
+        System.out.println("\n-------------HashSet Contacto-----------");;
+        Set<Contacto> hCSet = sets.construirHContacto();
+        System.out.println(hCSet);
+        System.out.println("Size = " + hCSet.size());
+
+        System.out.println("\n-------------TreeSet Contacto-----------");;
+        Set<Contacto> tCSet = sets.construirTreeSetContacto();
+        System.out.println(thCSet);
+        System.out.println("Size = " + thCSet.size());
+        
+    }
+
+
     private static void runEjercicios(){
         // ----------------------------
         Ejercicio1 ejercicio1 = new Ejercicio1();
@@ -84,8 +132,6 @@ public class App {
         System.out.println("Output: " + profundidad);
         
     }
-
-     
 
     private static void runBinaryTree() {
         BinaryTree<String> arbolStrings = new BinaryTree<>();
