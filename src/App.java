@@ -1,10 +1,11 @@
 import collections.maps.Maps;
 import collections.set.Sets;
+import evaluacion.Persona;
+import evaluacion.PersonaController;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import models.Contacto;
-import models.Persona;
 import structures.node.Node;
 import structures.trees.BinaryTree;
 import structures.trees.Ejercicio1;
@@ -16,7 +17,7 @@ import structures.trees.IntTree;
 public class App {
     public static void main(String[] args) throws Exception {
         runIntTree();
-        runBinaryTree();
+        // runBinaryTree();
         runEjercicios();
 
         runSets();
@@ -66,6 +67,23 @@ public class App {
         Maps maps = new Maps();
         maps.contruirHashMap();
 
+
+        System.out.println("\n-------------Ejercicio 1-----------");
+        List<Persona> personas = new ArrayList<>();
+
+        personas.add(new Persona("Juan Pérez", 25));
+        personas.add(new Persona("juan pérez", 25)); // Duplicado
+        personas.add(new Persona("Ana", 30));
+        personas.add(new Persona("Carlos", 18));
+        personas.add(new Persona("Luis", 40));
+
+        PersonaController controller = new PersonaController();
+
+        Set<Persona> resultado = controller.filtrarYOrdenar(personas, 20);
+
+        for (Persona p : resultado) {
+            System.out.println(p.getNombre() + " - " + p.getEdad());
+        }
     }
 
 
@@ -137,15 +155,15 @@ public class App {
         
     }
 
-    private static void runBinaryTree() {
-        BinaryTree<String> arbolStrings = new BinaryTree<>();
-        BinaryTree <Persona> arbolPersonas = new BinaryTree<>();
+    // private static void runBinaryTree() {
+    //     BinaryTree<String> arbolStrings = new BinaryTree<>();
+    //     BinaryTree <Persona> arbolPersonas = new BinaryTree<>();
 
-        arbolPersonas.add(new Persona("pablo", 30));
-        arbolPersonas.add(new Persona("ana", 25));
-        arbolPersonas.add(new Persona("luis", 35));
-        arbolPersonas.add(new Persona("maria", 28));
-    }
+    //     arbolPersonas.add(new Persona("pablo", 30));
+    //     arbolPersonas.add(new Persona("ana", 25));
+    //     arbolPersonas.add(new Persona("luis", 35));
+    //     arbolPersonas.add(new Persona("maria", 28));
+    // }
     
     public static void runIntTree(){
 
