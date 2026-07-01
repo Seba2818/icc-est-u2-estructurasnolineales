@@ -1,8 +1,8 @@
+import collections.maps.Maps;
+import collections.set.Sets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-
-import collections.set.Sets;
 import models.Contacto;
 import models.Persona;
 import structures.node.Node;
@@ -29,7 +29,7 @@ public class App {
 
         //Implementacion -> HashSet hashcode
 
-        System.out.println("\n-------------HashCode-----------");;
+        System.out.println("\n-------------HashCode-----------");
         Set<String> hashSet = sets.construirHashSet();
         System.out.println(hashSet);
         System.out.println("Size = " + hashSet.size());
@@ -40,28 +40,32 @@ public class App {
         System.out.println(lis);
 
 
-         System.out.println("\n-------------LinkedHashCode-----------");;
+         System.out.println("\n-------------LinkedHashCode-----------");
         Set<String> lSet = sets.LinkedHashSet();
         System.out.println(lSet);
         System.out.println("Size = " + lSet.size());
         System.out.println(lSet.contains("F"));
 
-        System.out.println("\n-------------TreeSet-----------");;
+        System.out.println("\n-------------TreeSet-----------");
         Set<String> tSet = sets.TreeSet();
         System.out.println(tSet);
         System.out.println("Size = " + tSet.size());
         System.out.println(tSet.contains("F"));
 
-        System.out.println("\n-------------HashSet Contacto-----------");;
+        System.out.println("\n-------------HashSet Contacto-----------");
         Set<Contacto> hCSet = sets.construirHContacto();
         System.out.println(hCSet);
         System.out.println("Size = " + hCSet.size());
 
-        System.out.println("\n-------------TreeSet Contacto-----------");;
-        Set<Contacto> tCSet = sets.construirTreeSetContacto();
+        System.out.println("\n-------------TreeSet Contacto-----------");
+        Set<Contacto> thCSet = sets.construirTreeSetContacto();
         System.out.println(thCSet);
         System.out.println("Size = " + thCSet.size());
         
+        System.out.println("\n-------------Mapa-----------");
+        Maps maps = new Maps();
+        maps.contruirHashMap();
+
     }
 
 
