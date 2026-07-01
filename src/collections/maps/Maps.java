@@ -1,9 +1,11 @@
 package collections.maps;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
+import java.util.TreeSet;
 import models.Contacto;
 
 public class Maps {
@@ -47,10 +49,21 @@ public class Maps {
         return mapa;
     }
 
-    public List<Contacto> ordenarUnicos(List<Contacto> contactos){
+    public Set<Contacto> ordenarUnicos(List<Contacto> contactos){
         
         // Retornar contactos unicos
         // unicos -> nombre
-        
+        Set<Contacto> nueva = new TreeSet<>(
+
+            (c1, c2) -> {
+                if(c1.getNombre().equals(c2.getNombre())){
+                    return 0;
+                }
+                return c1.getApellido().compareTo(c2.getApellido());
+            });
+        for (Contacto contacto : contactos){
+            nueva.add(contacto);
+        }
+        return nueva;
     }
 }
