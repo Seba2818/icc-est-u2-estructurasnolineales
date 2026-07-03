@@ -206,3 +206,7 @@ Ambos métodos funcionan de forma idéntica al `BinaryTree`:
 - La implementación prioriza simplicidad y claridad académica
 
 ---
+
+### Captura de la ejecución de GRAFOS
+
+![Graphs](graphs.png)

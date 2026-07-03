@@ -211,36 +211,48 @@ public class App {
         
     }
 
-    public static void runGraph() {
+    private static void runGraph() {
 
-    Graph<String> graph = new Graph<>();
+        Graph<String> g = new Graph<>();
 
-        graph.addEdge("K", "A");
-        graph.addEdge("E", "K");
+        g.add("A");
+        g.add("B");
+        g.add("C");
+        g.add("D");
+        g.add("E");
+        g.add("J");
+        g.add("K");
 
-        graph.addEdge("A", "B");
-        graph.addEdge("B", "C");
+        g.addEdge("A", "D");
+        g.addEdge("D", "J");
+        g.addEdge("E", "J");
 
-        graph.addEdge("A", "C");
-        graph.addEdge("A", "D");
+        g.addEdgeUni("A", "C");
+        g.addEdgeUni("B", "C");
+        g.addEdgeUni("C", "D");
+        g.addEdgeUni("C", "E");
+        g.addEdgeUni("E", "K");
+        g.addEdgeUni("K", "A");
 
-        graph.addEdge("C", "D");
-        graph.addEdge("C", "E");
+        System.out.println("--------------- GRAFO -------------");
+        g.printGraph();
 
-        graph.addEdge("E", "J");
-        
-        
+        g.removeEdge("E", "J");
+        g.removeEdge("A", "B"); 
+        g.addEdgeUni("A", "B"); 
 
-        System.out.println("Grafo original:");
-        graph.print();
+        System.out.println("\n----------------- GRAFO 2 -----------------");
+        g.printGraph();
 
-        System.out.println("\nEliminando K...\n");
-        graph.remove("K");
+        System.out.println("\nDirecciones: " + g.totalDirecciones());
+        System.out.println("Conexiones: " + g.totalConexiones());
 
-        System.out.println("Grafo actualizado:");
-        graph.print();
+        g.remove("K");
 
-        System.out.println("\nCantidad de direcciones: " + graph.getCantidadNodos());
-        System.out.println("Cantidad de conexiones: " + graph.getCantidadConexiones());
+        System.out.println("\n----------------- GRAFO SIN K -----------------------");
+        g.printGraph();
+
+        System.out.println("\nTotal direcciones: " + g.totalDirecciones());
+        System.out.println("Total conexiones: " + g.totalConexiones());
     }
 }

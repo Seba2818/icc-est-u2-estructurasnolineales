@@ -4,89 +4,107 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import structures.node.Node;
 
-public class Graph<T> {
+public class Graph<T>{
 
-    private Map<T, Set<T>> nodes;
+    private Map<T, Node<T>> nodes;
+    private Map<Node<T>, Set<Node<T>>> graph;
 
-    public Graph() {
+    public Graph(){
         nodes = new HashMap<>();
+        graph = new HashMap<>();
     }
 
-    // Agrega un vértice
-    public void add(T value) {
-        nodes.putIfAbsent(value, new HashSet<>());
+    public void add(T data){
+        if(!nodes.containsKey(data)){
+            Node<T> node = new Node<>(data);
+            nodes.put(data, node);
+            graph.put(node, new HashSet<>());
+        }
     }
 
-    // Grafo dirigido: v1 -> v2
-    public void addEdge(T v1, T v2) {
+    public void addEdge(T v1, T v2){
         add(v1);
         add(v2);
 
-        nodes.get(v1).add(v2);
+        Node<T> n1 = nodes.get(v1);
+        Node<T> n2 = nodes.get(v2);
+
+        graph.get(n1).add(n2);
+        graph.get(n2).add(n1);
     }
 
-    // Grafo no dirigido
-    public void addEdgeBi(T v1, T v2) {
+    public void addEdgeUni(T v1, T v2){
         add(v1);
         add(v2);
 
-        nodes.get(v1).add(v2);
-        nodes.get(v2).add(v1);
+        Node<T> n1 = nodes.get(v1);
+        Node<T> n2 = nodes.get(v2);
+
+        graph.get(n1).add(n2);
     }
 
-    public boolean contains(T value) {
-        return nodes.containsKey(value);
+    public void removeEdge(T v1, T v2){
+        Node<T> n1 = nodes.get(v1);
+        Node<T> n2 = nodes.get(v2);
+
+        if(n1 != null && n2 != null){
+            graph.get(n1).remove(n2);
+            graph.get(n2).remove(n1);
+        }
     }
 
+    public void removeEdgeUni(T v1, T v2){
+        Node<T> n1 = nodes.get(v1);
+        Node<T> n2 = nodes.get(v2);
 
+        if(n1 != null && n2 != null){
+            graph.get(n1).remove(n2);
+        }
+    }
 
-    public void print() {
-        System.out.println("\n--------- GRAFO ---------");
+    public void remove(T data){
+        Node<T> node = nodes.get(data);
+        if(node == null) return;
 
-        for (Map.Entry<T, Set<T>> entry : nodes.entrySet()) {
+        for(Set<Node<T>> conexiones : graph.values()){
+            conexiones.remove(node);
+        }
 
+        graph.remove(node);
+        nodes.remove(data);
+    }
+
+    public void printGraph(){
+        for(Map.Entry<Node<T>, Set<Node<T>>> entry : graph.entrySet()){
             System.out.print(entry.getKey() + " -> ");
-
-            for (T vecino : entry.getValue()) {
-                System.out.print(vecino + " ");
+            for(Node<T> conexion : entry.getValue()){
+                System.out.print(conexion + " ");
             }
-
             System.out.println();
         }
     }
 
-    public void remove(T value) {
-
-    // Si el nodo no existe, no hacemos nada
-        if (!nodes.containsKey(value)) {
-            System.out.println("El nodo " + value + " no existe.");
-            return;
-        }
-
-    // Eliminar el nodo del grafo
-        nodes.remove(value);
-
-    // Eliminar todas las referencias hacia ese nodo
-        for (Set<T> vecinos : nodes.values()) {
-            vecinos.remove(value);
-        }
-
-        System.out.println("Nodo " + value + " eliminado.");
-    }
-
-    public int getCantidadNodos() {
-        return nodes.size();
-    }
-
-    public int getCantidadConexiones() {
-
+    public int totalDirecciones(){
         int total = 0;
-
-        for (Set<T> vecinos : nodes.values()) {
-            total += vecinos.size();
+        for(Set<Node<T>> conexiones : graph.values()){
+            total += conexiones.size();
         }
-
         return total;
+    }
+    public int totalConexiones(){
+        Set<String> set = new HashSet<>();
+
+        for(Map.Entry<Node<T>, Set<Node<T>>> entry : graph.entrySet()){
+            for(Node<T> destino : entry.getValue()){
+                String a = entry.getKey().toString();
+                String b = destino.toString();
+
+                String key = (a.compareTo(b) < 0) ? a + "-" + b : b + "-" + a;
+                set.add(key);
+            }
+        }
+        return set.size();
     }
 }
