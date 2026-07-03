@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import models.Contacto;
+import structures.graphs.Graph;
 import structures.node.Node;
 import structures.trees.BinaryTree;
 import structures.trees.Ejercicio1;
@@ -19,7 +20,7 @@ public class App {
         runIntTree();
         // runBinaryTree();
         runEjercicios();
-
+        runGraph();
         runSets();
         
     }
@@ -85,7 +86,6 @@ public class App {
             System.out.println(p.getNombre() + " - " + p.getEdad());
         }
     }
-
 
     private static void runEjercicios(){
         // ----------------------------
@@ -167,6 +167,7 @@ public class App {
     
     public static void runIntTree(){
 
+
         
         IntTree arbolNumero = new IntTree();
         // Node <Integer> nodo1 = new Node<>(50);
@@ -208,5 +209,38 @@ public class App {
         
         
         
+    }
+
+    public static void runGraph() {
+
+    Graph<String> graph = new Graph<>();
+
+        graph.addEdge("K", "A");
+        graph.addEdge("E", "K");
+
+        graph.addEdge("A", "B");
+        graph.addEdge("B", "C");
+
+        graph.addEdge("A", "C");
+        graph.addEdge("A", "D");
+
+        graph.addEdge("C", "D");
+        graph.addEdge("C", "E");
+
+        graph.addEdge("E", "J");
+        
+        
+
+        System.out.println("Grafo original:");
+        graph.print();
+
+        System.out.println("\nEliminando K...\n");
+        graph.remove("K");
+
+        System.out.println("Grafo actualizado:");
+        graph.print();
+
+        System.out.println("\nCantidad de direcciones: " + graph.getCantidadNodos());
+        System.out.println("Cantidad de conexiones: " + graph.getCantidadConexiones());
     }
 }
