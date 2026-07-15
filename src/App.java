@@ -26,6 +26,66 @@ public class App {
         // runSets();
         runGraph2();
         runFibonaci();
+        runFibonacciMemo();
+        runFibonacciTab();
+        runFibonacciMemo2();
+    }
+
+    private static void runFibonacciMemo2() {
+        long startTime = System.nanoTime();
+        int num = 48;
+        long i = getFibonacciMemo2(num, new long[num + 1]);
+        long endTime = System.nanoTime();
+        long executionTime = endTime - startTime;
+
+        double milliseconds = (executionTime / 1_000_000.0);
+
+        System.out.println("Finbonaci de memo2 " + num + " es " + i + "  en: " + milliseconds + " milliseconds");
+    }
+
+    private static long getFibonacciMemo2(int n, long[] memo) {
+        if (n <= 1) {
+            return n;
+        }
+
+        long anterior = 0;
+        long actual = 1;
+
+        for (int i = 2; i <= n; i++) {
+            long siguiente = anterior + actual;
+            anterior = actual;
+            actual = siguiente;
+        }
+
+        return actual;
+
+    }
+
+    private static void runFibonacciTab() {
+        long startTime = System.nanoTime();
+        int num = 48;
+        long i = getFibonacciTab(num);
+        long endTime = System.nanoTime();
+        long executionTime = endTime - startTime;
+
+        double milliseconds = (executionTime / 1_000_000.0);
+
+        System.out.println("Finbonaci de tab " + num + " es " + i + "  en: " + milliseconds + " milliseconds");
+    }
+
+    private static long getFibonacciTab(int n) {
+        if (n <= 1) {
+            return n;
+        }
+        long[] fib = new long[n + 1];
+        fib[0] = 0;
+        fib[1] = 1;
+
+        for (int i = 2; i <= n; i++) {
+            fib[i] = fib[i - 1] + fib[i - 2];
+        }
+
+        return fib[n];
     }
 
     private static void runFibonaci() {
@@ -39,6 +99,30 @@ public class App {
 
         System.out.println("Finbonaci de " + num + " es " + i + "  en: " + milliseconds + " milliseconds");
 
+    }
+
+    private static void runFibonacciMemo() {
+        long startTime = System.nanoTime();
+        int num = 48;
+        long i = getFibonacciMemo(num, new long[num + 1]);
+        long endTime = System.nanoTime();
+        long executionTime = endTime - startTime;
+
+        double milliseconds = (executionTime / 1_000_000.0);
+
+        System.out.println("Finbonaci de memo" + num + " es " + i + "  en: " + milliseconds + " milliseconds");
+
+    }
+
+    private static long getFibonacciMemo(int n, long[] memo) {
+        if (n <= 1) {
+            return n;
+        }
+        if (memo[n] != 0) {
+            return memo[n];
+        }
+        memo[n] = getFibonacciMemo(n - 1, memo) + getFibonacciMemo(n - 2, memo);
+        return memo[n];
     }
 
     private static long getFibonacci(int i) {
