@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Set;
 import models.Contacto;
 import structures.graphs.Graph;
+import structures.graphs.PathResult;
+import structures.graphs.implementations.DFSPathFinder;
 import structures.node.Node;
 import structures.trees.BinaryTree;
 import structures.trees.Ejercicio1;
@@ -17,19 +19,43 @@ import structures.trees.IntTree;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        runIntTree();
+        // runIntTree();
         // runBinaryTree();
-        runEjercicios();
-        runGraph();
-        runSets();
-        
+        // runEjercicios();
+        // runGraph();
+        // runSets();
+        runGraph2();
     }
 
-    
+    private static void runGraph2() {
+        Graph<String> g = new Graph<>();
+
+        g.addEdgeUni("A", "B");
+        g.addEdgeUni("A", "C");
+        g.addEdgeUni("B", "D");
+        g.addEdgeUni("D", "E");
+        g.addEdgeUni("E", "F");
+        g.addEdgeUni("C", "J");
+        g.addEdgeUni("K", "J");
+
+        DFSPathFinder<String> dfs = new DFSPathFinder<>();
+
+        PathResult<String> result = dfs.find(g, "A", "F");
+        PathResult<String> result2 = dfs.find(g, "A", "J");
+        PathResult<String> result3 = dfs.find(g, "A", "K");
+
+        System.out.println("PathResult");
+        System.out.println(result);
+        System.out.println("PathResult");
+        System.out.println(result2);
+        System.out.println("PathResult");
+        System.out.println(result3);
+    }
+
     private static void runSets() {
         Sets sets = new Sets();
 
-        //Implementacion -> HashSet hashcode
+        // Implementacion -> HashSet hashcode
 
         System.out.println("\n-------------HashCode-----------");
         Set<String> hashSet = sets.construirHashSet();
@@ -41,8 +67,7 @@ public class App {
         lis.add("S");
         System.out.println(lis);
 
-
-         System.out.println("\n-------------LinkedHashCode-----------");
+        System.out.println("\n-------------LinkedHashCode-----------");
         Set<String> lSet = sets.LinkedHashSet();
         System.out.println(lSet);
         System.out.println("Size = " + lSet.size());
@@ -63,11 +88,10 @@ public class App {
         Set<Contacto> thCSet = sets.construirTreeSetContacto();
         System.out.println(thCSet);
         System.out.println("Size = " + thCSet.size());
-        
+
         System.out.println("\n-------------Mapa-----------");
         Maps maps = new Maps();
         maps.contruirHashMap();
-
 
         System.out.println("\n-------------Ejercicio 1-----------");
         List<Persona> personas = new ArrayList<>();
@@ -87,18 +111,18 @@ public class App {
         }
     }
 
-    private static void runEjercicios(){
+    private static void runEjercicios() {
         // ----------------------------
         Ejercicio1 ejercicio1 = new Ejercicio1();
-        int[] numeros = new int[]{5,3,7,2,4,6,8};
+        int[] numeros = new int[] { 5, 3, 7, 2, 4, 6, 8 };
         ejercicio1.insert(numeros);
-        
+
         // ---------------------------
         Ejercicio2 ejercicio2 = new Ejercicio2();
-        int[] numeros2 = new int[] {5,3,7,2,4,6,8};
+        int[] numeros2 = new int[] { 5, 3, 7, 2, 4, 6, 8 };
 
         BinaryTree<Integer> arbol = new BinaryTree<>();
-        for(int numero: numeros2)
+        for (int numero : numeros2)
             arbol.add(numero);
 
         Node<Integer> root = arbol.getRoot();
@@ -106,29 +130,28 @@ public class App {
 
         // ---------------------------------
         Ejercicio3 ejercicio3 = new Ejercicio3();
-        
-        int[] numeros3 = new int[]{4,2,7,1,3,6,9};
+
+        int[] numeros3 = new int[] { 4, 2, 7, 1, 3, 6, 9 };
 
         BinaryTree<Integer> arbolEjercicio3 = new BinaryTree<>();
-        
+
         for (int numero : numeros3) {
-             arbolEjercicio3.add(numero);
-            }
+            arbolEjercicio3.add(numero);
+        }
 
         List<List<Node<Integer>>> niveles = ejercicio3.listLevels(arbolEjercicio3.getRoot());
 
         System.out.println("\n------------Ejercicio 3-----------");
 
-            for (List<Node<Integer>> nivel : niveles) {
-                for (Node<Integer> nodo : nivel) {
+        for (List<Node<Integer>> nivel : niveles) {
+            for (Node<Integer> nodo : nivel) {
                 System.out.print(nodo.getValue() + " ");
-                }
-                System.out.println();
             }
+            System.out.println();
+        }
 
-        //--------------------------------------
+        // --------------------------------------
         Ejercicio4 ejercicio4 = new Ejercicio4();
-       
 
         Node<Integer> root4 = new Node<>(4);
         root4.setLeft(new Node<>(2));
@@ -143,7 +166,6 @@ public class App {
 
         System.out.println("\n------------Ejercicio 4-----------");
 
-
         System.out.println("Input:");
         System.out.println("    " + root4.getValue());
         System.out.println("  " + root4.getLeft().getValue() + "     " + root4.getRight().getValue());
@@ -152,23 +174,21 @@ public class App {
 
         System.out.println();
         System.out.println("Output: " + profundidad);
-        
+
     }
 
     // private static void runBinaryTree() {
-    //     BinaryTree<String> arbolStrings = new BinaryTree<>();
-    //     BinaryTree <Persona> arbolPersonas = new BinaryTree<>();
+    // BinaryTree<String> arbolStrings = new BinaryTree<>();
+    // BinaryTree <Persona> arbolPersonas = new BinaryTree<>();
 
-    //     arbolPersonas.add(new Persona("pablo", 30));
-    //     arbolPersonas.add(new Persona("ana", 25));
-    //     arbolPersonas.add(new Persona("luis", 35));
-    //     arbolPersonas.add(new Persona("maria", 28));
+    // arbolPersonas.add(new Persona("pablo", 30));
+    // arbolPersonas.add(new Persona("ana", 25));
+    // arbolPersonas.add(new Persona("luis", 35));
+    // arbolPersonas.add(new Persona("maria", 28));
     // }
-    
-    public static void runIntTree(){
 
+    public static void runIntTree() {
 
-        
         IntTree arbolNumero = new IntTree();
         // Node <Integer> nodo1 = new Node<>(50);
         // Node <Integer> nodo2 = new Node<>(10);
@@ -179,9 +199,9 @@ public class App {
         // nodo2.setLeft(nodo3);
 
         // System.out.println(arbolNumero.getRoot());
-        // System.out.println(arbolNumero.getRoot().getRight().getLeft()); 
+        // System.out.println(arbolNumero.getRoot().getRight().getLeft());
 
-        //nodo3.setLeft(nodo1);
+        // nodo3.setLeft(nodo1);
 
         arbolNumero.add(50);
         arbolNumero.add(10);
@@ -190,9 +210,7 @@ public class App {
         arbolNumero.add(75);
         arbolNumero.add(55
 
-
         );
-        
 
         System.out.println("\nPreorden: ");
         arbolNumero.preOrden();
@@ -206,9 +224,7 @@ public class App {
         System.out.println("\nArbol Altura: " + arbolNumero.getHeight());
 
         System.out.println("Peso: " + arbolNumero.getPeso());
-        
-        
-        
+
     }
 
     private static void runGraph() {
@@ -235,22 +251,22 @@ public class App {
         g.addEdgeUni("K", "A");
 
         System.out.println("--------------- GRAFO -------------");
-        g.printGraph();
+        g.print();
 
         g.removeEdge("E", "J");
-        g.removeEdge("A", "B"); 
-        g.addEdgeUni("A", "B"); 
+        g.removeEdge("A", "B");
+        g.addEdgeUni("A", "B");
 
         System.out.println("\n----------------- GRAFO 2 -----------------");
-        g.printGraph();
+        g.print();
 
         System.out.println("\nDirecciones: " + g.totalDirecciones());
         System.out.println("Conexiones: " + g.totalConexiones());
 
-        g.remove("K");
+        g.removeNode("K");
 
         System.out.println("\n----------------- GRAFO SIN K -----------------------");
-        g.printGraph();
+        g.print();
 
         System.out.println("\nTotal direcciones: " + g.totalDirecciones());
         System.out.println("Total conexiones: " + g.totalConexiones());
